@@ -15,6 +15,7 @@ cachetools==5.5.2
 certifi==2025.6.15
 charset-normalizer==3.4.2
 chroma-hnswlib==0.7.3
+chromadb==1.0.13
 click==8.2.1
 coloredlogs==15.0.1
 dataclasses-json==0.6.7
