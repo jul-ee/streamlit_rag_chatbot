@@ -28,6 +28,8 @@ from langchain_community.chat_message_histories.streamlit import StreamlitChatMe
 # secrets.toml → 런타임으로 키 읽기
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
+st.set_page_config(page_title="ChatConstitutionMem", page_icon="💬")
+
 
 # ──────────────────────────────────────────────
 # Ⅱ. PDF 로드 & 벡터스토어
@@ -49,7 +51,7 @@ def create_vector_store(_docs):
         split_docs,
         OpenAIEmbeddings(
             model="text-embedding-3-small",
-            openai_api_key=OPENAI_API_KEY  # 🔑 키 전달
+            openai_api_key=OPENAI_API_KEY
         ),
         persist_directory=persist_directory
     )
@@ -65,7 +67,7 @@ def get_vectorstore(_docs):
             persist_directory=persist_directory,
             embedding_function=OpenAIEmbeddings(
                 model="text-embedding-3-small",
-                openai_api_key=OPENAI_API_KEY  # 🔑 키 전달
+                openai_api_key=OPENAI_API_KEY
             )
         )
     else:
@@ -120,7 +122,7 @@ Keep the answer perfect. please use imogi with the answer. \
     # 3) LLM 설정
     llm = ChatOpenAI(
         model=selected_model,
-        openai_api_key=OPENAI_API_KEY  # 🔑 키 전달
+        openai_api_key=OPENAI_API_KEY
     )
 
     # 4) History-Aware Retriever & 최종 RAG 체인
@@ -133,7 +135,7 @@ Keep the answer perfect. please use imogi with the answer. \
 # ──────────────────────────────────────────────
 # Ⅳ. Streamlit UI
 # ──────────────────────────────────────────────
-st.header("헌법 Q&A 챗봇 💬 📚")
+st.header("💬 대화가 이어지는 헌법 Q&A 챗봇")
 
 option = st.selectbox("Select GPT Model", ("gpt-4o-mini", "gpt-3.5-turbo-0125"))
 rag_chain = initialize_components(option)

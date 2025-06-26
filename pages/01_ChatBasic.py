@@ -19,6 +19,8 @@ from langchain_openai import ChatOpenAI  # OpenAI LLM 래퍼
 # secrets.toml → 런타임으로 API 키 로드
 OPENAI_API_KEY: str = st.secrets["OPENAI_API_KEY"]
 
+st.set_page_config(page_title="ChatBasic", page_icon="💭")
+
 
 # ──────────────────────────────────────────────
 # Ⅱ. LLM 초기화

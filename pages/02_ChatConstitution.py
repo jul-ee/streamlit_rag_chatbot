@@ -27,6 +27,7 @@ from langchain_core.output_parsers import StrOutputParser
 # secrets.toml → 런타임으로 API 키 로드
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
+st.set_page_config(page_title="ChatConstitution", page_icon="📜")
 
 # ──────────────────────────────────────────────
 # Ⅱ. PDF 로드 & 벡터스토어
@@ -103,7 +104,7 @@ def chaining():
 
     llm = ChatOpenAI(
         model="gpt-4o-mini",
-        openai_api_key=OPENAI_API_KEY    # API 키 전달
+        openai_api_key=OPENAI_API_KEY
     )
 
     rag_chain = (
@@ -118,7 +119,7 @@ def chaining():
 # ──────────────────────────────────────────────
 # Ⅳ. Streamlit UI
 # ──────────────────────────────────────────────
-st.header("헌법 Q&A 챗봇 💬 📚")
+st.header("💬 헌법 Q&A 챗봇")
 rag_chain = chaining()
 
 # 1) 세션 상태 초기화
